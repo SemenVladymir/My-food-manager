@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My food manager", "My food manager.csproj", "{A4674C8C-CD6B-48D3-9184-32EE28212267}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyServer", "..\MyServer\MyServer.csproj", "{2EE60CA2-D404-4956-8AE1-9933F6148541}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A4674C8C-CD6B-48D3-9184-32EE28212267}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4674C8C-CD6B-48D3-9184-32EE28212267}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4674C8C-CD6B-48D3-9184-32EE28212267}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4674C8C-CD6B-48D3-9184-32EE28212267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE60CA2-D404-4956-8AE1-9933F6148541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE60CA2-D404-4956-8AE1-9933F6148541}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE60CA2-D404-4956-8AE1-9933F6148541}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE60CA2-D404-4956-8AE1-9933F6148541}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {42C83808-9152-450B-AC49-753631ED1454}
+	EndGlobalSection
+EndGlobal
