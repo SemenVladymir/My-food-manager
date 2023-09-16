@@ -1,0 +1,136 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:UsefulPlantsCatalog.View">
+    <!--Windows-->
+    <Style x:Key="WindowStyle" TargetType="Window">
+        <Setter Property="Background" Value="WhiteSmoke"/>
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+
+    <!--UCs-->
+    <Style x:Key="UCStyle" TargetType="UserControl">
+        <Setter Property="Background" Value="WhiteSmoke"/>
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+
+    <!--Borders-->
+    <Style x:Key="BorderStyleGray" TargetType="Border">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="Background" Value="LightGray"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+    <Style x:Key="BorderStyleWhite" BasedOn="{StaticResource ResourceKey=BorderStyleGray}" TargetType="Border">
+        <Setter Property="Background" Value="WhiteSmoke"/>
+    </Style>
+    <Style x:Key="BorderStyleBlue" BasedOn="{StaticResource ResourceKey=BorderStyleGray}" TargetType="Border">
+        <Setter Property="Background" Value="LightBlue"/>
+        <Setter Property="BorderThickness" Value="0 1 0 1"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+    <Style x:Key="BorderStyleIcon" BasedOn="{StaticResource ResourceKey=BorderStyleWhite}" TargetType="Border">
+        <Setter Property="BorderBrush" Value="LightGray"/>
+    </Style>
+    <Style x:Key="BorderStyleCard" BasedOn="{StaticResource ResourceKey=BorderStyleWhite}" TargetType="Border">
+        <Setter Property="BorderBrush" Value="LightGray"/>
+        <Setter Property="CornerRadius" Value="0"/>
+    </Style>
+    <Style x:Key="BorderStyleHead" BasedOn="{StaticResource ResourceKey=BorderStyleWhite}" TargetType="Border">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="BorderStyleImage" TargetType="Border">
+        <Setter Property="Background" Value="Black"/>
+        <Setter Property="CornerRadius" Value="5 5 0 0"/>
+    </Style>
+
+    <!--Buttons-->
+    <Style x:Key="BtnCard" TargetType="Button">
+        <Setter Property="Margin" Value="150 20 150 20"/>
+        <Setter Property="Visibility" Value="collapsed"/>
+        <Setter Property="Background" Value="BlueViolet"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="FontSize" Value="20"/>
+    </Style>
+    
+
+    <!--TextBlocks-->
+    <Style x:Key="TxtBlockHead" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="TxtBlockCard" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="17"/>
+    </Style>
+    <Style x:Key="TxtBlockCardChapter"  BasedOn="{StaticResource ResourceKey=TxtBlockCard}" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="0 10"/>
+        <Setter Property="FontSize" Value="19"/>
+    </Style>
+    <Style x:Key="TxtBlockIcon"  BasedOn="{StaticResource ResourceKey=TxtBlockCardChapter}" TargetType="TextBlock">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="black"/>
+    </Style>
+    <Style x:Key="TxtBlockMainW1"  BasedOn="{StaticResource ResourceKey=TxtBlockCardIcon}" TargetType="TextBlock">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="black"/>
+    </Style>
+
+
+    <!--TextBoxes-->
+    <Style x:Key="TxtBoxCard" TargetType="TextBox">
+        <Setter Property="BorderBrush" Value="WhiteSmoke"/>
+        <Setter Property="Background" Value="WhiteSmoke"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    <Style x:Key="TxtBoxCardChapter" BasedOn="{StaticResource ResourceKey=TxtBoxCard}" TargetType="TextBox">
+        <Setter Property="FontSize" Value="19"/>
+    </Style>
+    <Style x:Key="TxtBoxIcon" BasedOn="{StaticResource ResourceKey=TxtBoxCard}" TargetType="TextBox">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="black"/>
+    </Style>
+    <Style x:Key="TxtBoxSearch" BasedOn="{StaticResource ResourceKey=TxtBoxCard}" TargetType="TextBox">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="black"/>
+        <Setter Property="Width" Value="250"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Margin" Value="30 0"/>
+    </Style>
+
+
+    <!--ListBoxes-->
+    <Style x:Key="ListBoxStyle" TargetType="ListBox">
+        <Setter Property="Background" Value="WhiteSmoke"/>
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+
+    
+    <!--StackPanels-->
+    <Style x:Key="StackPanelCard" TargetType="StackPanel">
+        <Setter Property="Background" Value="WhiteSmoke"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Margin" Value="0 5"/>
+    </Style>
+
+    <!--MaterialDesign-->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
