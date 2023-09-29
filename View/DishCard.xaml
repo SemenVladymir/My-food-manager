@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="My_food_manager.View.DishCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:My_food_manager.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="400"
+                Style="{DynamicResource ResourceKey=UCStyle}">
+    <UserControl.Resources>
+        <ResourceDictionary Source="DayStyles.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+
+
+    <Border Style="{DynamicResource ResourceKey=BorderStyleCard}" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="45*" />
+                <RowDefinition Height="60*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40*" />
+                <ColumnDefinition Width="60*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock  x:Name="Name" Grid.Row="0" FontSize="17" Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="{Binding Path=Name}" Style="{DynamicResource TxtBlockCard}"/>
+            <Image Grid.Column="0" Grid.Row="1" Source="{Binding Path=MainPhotoURL}"/>
+            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
+                <TextBlock x:Name="Description" FontSize="13" Text="{Binding Path=Description}" Margin="5, 5" Style="{DynamicResource TxtBlockCard}"/>
+                <TextBlock x:Name="Ingredients" FontSize="13" Text="{Binding Path=Ingredients}" Margin="5, 5" Style="{DynamicResource TxtBlockCard}"/>
+                <Button x:Name="AddToMenu" Margin="15 5" Content="Додати до меню" Click="btnAdd_Click"/>
+                <Button x:Name="AddToFavorite" Margin="10 5" Content="Додати в мої фаворити" Click="btnAddFavor_Click"/>
+            </StackPanel>
+            <FlowDocumentScrollViewer x:Name="Recipe" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 10 0 0"/>
+        </Grid>
+    </Border>
+</UserControl>

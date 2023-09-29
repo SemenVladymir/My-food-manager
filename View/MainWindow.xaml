@@ -6,74 +6,168 @@
         xmlns:local="clr-namespace:My_food_manager"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1600"
+        Title="MainWindow" Height="800" Width="1200"
         Style="{DynamicResource ResourceKey=WindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="0" />
+            <RowDefinition Height="80" />
             <RowDefinition Height="0" />
             <RowDefinition Height="0" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="60*" />
+            <RowDefinition Height="4" />
+            <RowDefinition Height="30*" />
+            <RowDefinition Height="10" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="4"/>
+            <ColumnDefinition Width="63*"/>
+            <ColumnDefinition Width="4"/>
+            <ColumnDefinition Width="30*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Border  Grid.ColumnSpan="3" Style="{DynamicResource ResourceKey=BorderStyleHead}">
-            <TextBlock Text="КАТАЛОГ КОРИСТНИХ РОСЛИН УКРАЇНИ" Style="{DynamicResource ResourceKey=TxtBlockHead}"/>
-        </Border>
-        <Border Grid.Row="1"  Grid.ColumnSpan="3" Style="{DynamicResource ResourceKey=BorderStyleBlue}">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="left">
-                <TextBlock Text="Пошук" FontSize="16" Margin="30 8 10 0"/>
-                <TextBox Text="{Binding Path=SearchName, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource ResourceKey=TxtBoxSearch}"/>
+
+        <Border Grid.Row="1"  Grid.ColumnSpan="5" Style="{DynamicResource ResourceKey=BorderStyleBlue}">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Категорія блюд" FontWeight="Bold" Margin="5, 30"/>
+                        <ComboBox Width="170" Height="30" Margin="10, 0" ItemsSource="{Binding Groups}" SelectedItem="{Binding SelectedDishGroup}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0, 10">
+                        <TextBlock Text="Пошук блюда" FontWeight="Bold" Margin="5, 20"/>
+                        <TextBox Text="{Binding Path=SearchDishName, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource ResourceKey=TxtBoxSearch}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  Margin="10, 0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Група продуктів" FontWeight="Bold" Margin="5, 30"/>
+                        <ComboBox Width="170" Height="30" Margin="10, 0" ItemsSource="{Binding Allcategories}" SelectedItem="{Binding SelectedCategory}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0, 10">
+                        <TextBlock Text="Пошук продукту" FontWeight="Bold" Margin="5, 20"/>
+                        <TextBox Text="{Binding Path=SearchProduct, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource ResourceKey=TxtBoxSearch}"/>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
         </Border>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" Margin="0 10 10 0" Panel.ZIndex="1">
+        <!--<StackPanel Grid.Row="1" Orientation="Horizontal" Grid.Column="4" HorizontalAlignment="Right" Margin="0 10 10 0" Panel.ZIndex="1">
             <TextBlock Text="День" FontSize="16" />
             <ToggleButton  IsChecked="{Binding IsChecked}" x:Name="LightSwitch" Width="30" Height="20" Margin="10 -5 10 0"/>
             <TextBlock Text="Нічь" FontSize="16"/>
-            <Button Content="admin" Command="{Binding EnterPass}" Style="{StaticResource MaterialDesignFlatButton}"  Margin="20 -10 0 0" Visibility="{Binding Path=IsVisible, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibilityConverter}}" Cursor="Hand"/>
-            <!--<PasswordBox x:Name="Password" Visibility="{Binding Path=IsEnable, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibilityConverter}}" Width="80" Margin=" 20 0 0 5">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="PasswordChanged">
-                        <i:InvokeCommandAction Command="{Binding SecretKeyChangedCommand}" CommandParameter="{Binding ElementName=Password}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </PasswordBox>-->
-            <Button x:Name="BtnAdd" Content="Додати рослину" Height="30" Width="140" Margin="10 -9 0 0" Command="{Binding Adding}"
-             Visibility="{Binding Path=BtnAddStation, Converter={StaticResource BooleanToVisibilityConverter}}" Cursor="Hand"/>
-        </StackPanel>
+        </StackPanel>-->
 
-        <Border Style="{DynamicResource ResourceKey=BorderStyleWhite}" Grid.Row="4">
-            <ListBox ItemsSource="{Binding Plants}" SelectedItem="{Binding SelectedPlant}" Style="{DynamicResource ResourceKey=ListBoxStyle}">
+        <!--<StackPanel  Grid.Row="4">
+            <TextBlock Text="Страви" FontSize="16" HorizontalAlignment="Center"/>-->
+        <Border Grid.Row="4" Style="{DynamicResource ResourceKey=BorderStyleWhite}">
+            <ListBox Grid.Row="4" ItemsSource="{Binding Dishes}" SelectedItem="{Binding SelectedDish}" Style="{DynamicResource ResourceKey=ListBoxStyle}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Path=FolkName}" FontWeight="Bold" Margin="5, 3"/>
-                            <TextBlock Text=" (" Margin="0, 3"/>
-                            <TextBlock Text="{Binding Path=ScienceName}" Margin="0, 3"/>
-                            <TextBlock Text=")" Margin="0, 3"/>
+                            <Image Source="{Binding Path=MainPhotoURL}" Width="50" Height="50"/>
+                            <TextBlock Text="{Binding Path=Name}" FontWeight="Bold" Margin="5 15 0 0"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Border>
-        <GridSplitter Grid.Column="1" Grid.Row="4" Width="5" HorizontalAlignment="Stretch"/>
-        <Border  Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Style="{DynamicResource ResourceKey=BorderStyleWhite}">
-            <ScrollViewer >
-                <ItemsControl ItemsSource="{Binding Icons, UpdateSourceTrigger=PropertyChanged}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal"  ItemHeight="270" ItemWidth="270"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
+        <!--</StackPanel>-->
+
+        <Border Grid.Row="6" Style="{DynamicResource ResourceKey=BorderStyleWhite}">
+            <StackPanel>
+                <TextBlock Text="Інгредієнти:" FontSize="20" HorizontalAlignment="Center"/>
+                <ListBox ItemsSource="{Binding Ingredients}" SelectedItem="{Binding SelectedIngredient}" Style="{DynamicResource ResourceKey=ListBoxStyle}" Height="189">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=Name}" FontWeight="Bold" Margin="5, -2"/>
+                                <!--<TextBlock Text="{Binding Path=Weight}" FontWeight="Bold" Margin="5, 3"/>-->
+                                <TextBlock Text="{Binding Path=Dimension}" FontWeight="Bold" Margin="5, -2"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </Border>
+        <GridSplitter Grid.Column="1" Grid.Row="4" Grid.RowSpan="3" Width="4" HorizontalAlignment="Stretch"/>
+        <!--<Border  Grid.Row="4" Grid.Column="2" Style="{DynamicResource ResourceKey=BorderStyleWhite}">-->
+        <ScrollViewer Cursor="" Grid.Row="4" Grid.Column="2">
+            <ItemsControl ItemsSource="{Binding PCards, UpdateSourceTrigger=PropertyChanged}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"  Cursor=""/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
+        <!--</Border>-->
+        <StackPanel Grid.Row="5" Grid.ColumnSpan="5" Background="LightGray"/>
+        <!--<Border Grid.Row="5" Grid.Column="2" Style="{DynamicResource ResourceKey=BorderStyleWhite}">-->
+        <StackPanel Grid.Row="6" Grid.Column="2">
+            <Button Content="Купити продукти:" FontSize="20" HorizontalAlignment="Center" Command="{Binding GoShopping}" Style="{StaticResource MaterialDesignFlatButton}" />
+            <ScrollViewer VerticalScrollBarVisibility="Visible">
+                <DataGrid x:Name="ProductGrid"  ItemsSource="{Binding ProductsForShopping, UpdateSourceTrigger=PropertyChanged}" 
+                          AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray" RowBackground="LightGray" AlternatingRowBackground="White"
+                          GridLinesVisibility="Vertical" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" Height="185"
+                          SelectedItem="{Binding SelectedDataItem}">
+                    <DataGrid.RowHeight>35</DataGrid.RowHeight>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Назва" Binding="{Binding Path=Name}" Width="200"/>
+                        <DataGridTextColumn Header="Магазин" Binding="{Binding Path=Provider}" Width="85" />
+                        <DataGridTextColumn Header="Кількість" Binding="{Binding Path=Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="90" />
+                        <DataGridTextColumn Header="Ціна" Binding="{Binding Path=Price, UpdateSourceTrigger=PropertyChanged}" Width="80" />
+                        <DataGridTextColumn Header="Одиниці виміру" Binding="{Binding Path=Dimension}" Width="150" />
+                    </DataGrid.Columns>
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <!--<MenuItem Header="Редагувати" />-->
+                            <MenuItem Header="Видалити" Command="{Binding DeleteLine}"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                </DataGrid>
             </ScrollViewer>
+        </StackPanel>
+        <!--</Border>-->
+
+        <GridSplitter Grid.Column="3" Grid.Row="4" Width="4" Grid.RowSpan="3" HorizontalAlignment="Stretch"/>
+
+        <Border Style="{DynamicResource ResourceKey=BorderStyleWhite}" Grid.Row="4" Grid.Column="4">
+            <TreeView ItemsSource="{Binding Path=Menu}" SelectedValuePath="{Binding Path=SelectedDishName, UpdateSourceTrigger=PropertyChanged}">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Path=Items}">
+                        <TextBlock Text="{Binding Title}" />
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+                <TreeView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Видалити"/>
+                    </ContextMenu>
+                </TreeView.ContextMenu>
+            </TreeView>
+        </Border>
+
+        <Border Grid.Row="6" Grid.Column="4" Height="210" Style="{DynamicResource ResourceKey=BorderStyleWhite}">
+            <StackPanel >
+                <TextBlock Text="Мої фаворити:" FontSize="20" HorizontalAlignment="Center"/>
+                <ListBox Grid.Row="4" ItemsSource="{Binding FavoriteDishes, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDish}" Style="{DynamicResource ResourceKey=ListBoxStyle}" Height="189">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Path=MainPhotoURL}" Width="25" Height="25"/>
+                                <TextBlock Text="{Binding Path=Name}" FontWeight="Bold" Margin="5 2"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <ListBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Видалити" Command="{Binding Delete}"/>
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                </ListBox>
+            </StackPanel>
         </Border>
     </Grid>
 </Window>

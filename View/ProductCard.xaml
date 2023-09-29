@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:My_food_manager.View"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+              
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
-             d:DesignHeight="270" d:DesignWidth="270">
+             d:DesignHeight="180" d:DesignWidth="180">
+   
     <Border Style="{DynamicResource ResourceKey=BorderStyleIcon}" RenderTransformOrigin=".95 .95">
         <Border.Effect>
             <DropShadowEffect x:Name="Earth_Shadow">
@@ -38,24 +40,29 @@
         </Border.Triggers>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="90*" />
+                <RowDefinition Height="70*" />
                 <RowDefinition Height="10*" />
+                <RowDefinition Height="25*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Border Style="{DynamicResource ResourceKey=BorderStyleImage}">
-                <Image x:Name="PlantImage" Grid.Row="0" Source="{Binding PhotoURL}" Stretch="Fill">
+                <Image x:Name="ProductImage" Grid.Row="1" Source="{Binding UrlPhoto}" Stretch="fill" >
                     <Image.Triggers>
                         <EventTrigger RoutedEvent="MouseDown"/>
                     </Image.Triggers>
-                    <!--<i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseDown" SourceObject="{Binding ElementName=PlantImage}">
-                            <i:InvokeCommandAction 
-                        Command="{Binding OpenWindow}"/>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDown" SourceObject="{Binding ElementName=ProductImage}">
+                            <i:InvokeCommandAction Command="{Binding OpenWindow}"/>
                         </i:EventTrigger>
-                    </i:Interaction.Triggers>-->
+                    </i:Interaction.Triggers>
                 </Image>
             </Border>
-            <TextBlock Grid.Row="1" Text="{Binding Path=Name}" Style="{DynamicResource ResourceKey=TxtBlockIcon}"/>
+            <DockPanel Grid.Row="1" HorizontalAlignment="Center">
+                <TextBlock  Text="{Binding Path=Provider}" Style="{DynamicResource ResourceKey=TxtBlockIcon}" FontWeight="Bold" Margin="5 0"/>
+                <TextBlock  Text="{Binding Path=Price}" Style="{DynamicResource ResourceKey=TxtBlockIcon}" FontWeight="Bold" Margin="5 0"/>
+                <TextBlock  Text="{Binding Path=Dimension}" Style="{DynamicResource ResourceKey=TxtBlockIcon}" FontWeight="Bold" Margin="5 0"/>
+            </DockPanel>
+            <TextBlock Grid.Row="2" Text="{Binding Path=Name}" TextAlignment="Center" Style="{DynamicResource ResourceKey=TxtBlockIcon}"/>
         </Grid>
     </Border>
 </UserControl>

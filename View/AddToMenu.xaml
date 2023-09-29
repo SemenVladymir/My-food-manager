@@ -1,0 +1,22 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:My_food_manager.View"
+             xmlns:ViewModel="clr-namespace:My_food_manager.ViewModel" x:Class="My_food_manager.View.AddToMenu"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="450">
+    <StackPanel HorizontalAlignment="Center">
+        <TextBlock Text="Додати в меню" HorizontalAlignment="Center" Margin="0 5"/>
+        <TextBox Text="{Binding MyNewDish}" Margin="0 5" FontSize="15" HorizontalAlignment="Center"/>
+        <Calendar Height="330" SelectedDate="{Binding SelectedDate, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Період дня" HorizontalAlignment="Center" Margin="0 5"/>
+        <ComboBox  ItemsSource="{Binding DishTime}" SelectedItem="{Binding SelectedDishTime, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Страва" HorizontalAlignment="Center" Margin="0 5"/>
+        <ComboBox ItemsSource="{Binding NumberOfDish}" SelectedItem="{Binding SelectedNumberOfDish, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Замітка" HorizontalAlignment="Center" Margin="0 5"/>
+        <TextBox Text="{Binding MenuDescription, UpdateSourceTrigger=PropertyChanged}" Margin="0 5"/>
+        <Button Command="{Binding AddToMenu}" Content="Додати у меню"/>
+    </StackPanel>
+</UserControl>
